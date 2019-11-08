@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: jiannan.lv
  * @Date: 2019-11-07 10:32:27
- * @LastEditTime: 2019-11-08 11:06:06
+ * @LastEditTime: 2019-11-08 11:15:25
  * @LastEditors: jiannan.lv
  */
 // import Validation from '../util/validation'
@@ -35,6 +35,7 @@ export async function getUserList (ctx, next) {
         }
       ]
     },
+    order: Sequelize.col('id'),
     limit: Number(pageSize),
     offset: Number(pageSize) * (page - 1)
     // attributes: ['chartId', 'chName', 'enName', 'createTime', 'mark']

@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: jiannan.lv
  * @Date: 2019-11-07 14:59:25
- * @LastEditTime: 2019-11-08 11:04:26
+ * @LastEditTime: 2019-11-08 11:15:43
  * @LastEditors: jiannan.lv
  */
 import { Chart } from '../models'
@@ -33,6 +33,7 @@ export async function getChartList (ctx, next) {
         }
       ]
     },
+    order: Sequelize.col('created_at'),
     limit: Number(pageSize),
     offset: Number(pageSize) * (page - 1),
     attributes: ['chartId', 'chName', 'enName', 'createTime', 'mark']
