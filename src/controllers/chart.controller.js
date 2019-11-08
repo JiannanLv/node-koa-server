@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: jiannan.lv
  * @Date: 2019-11-07 14:59:25
- * @LastEditTime: 2019-11-07 19:49:33
+ * @LastEditTime: 2019-11-08 11:04:26
  * @LastEditors: jiannan.lv
  */
 import { Chart } from '../models'
@@ -20,12 +20,18 @@ export async function getChartList (ctx, next) {
   // 查询列表
   const chartList = await Chart.findAll({
     where: {
-      chName: {
-        [Op.like]: `%${key}%`
-      },
-      enName: {
-        [Op.like]: `%${key}%`
-      }
+      [Op.or]: [
+        {
+          chName: {
+            [Op.like]: `%${key}%`
+          }
+        },
+        {
+          enName: {
+            [Op.like]: `%${key}%`
+          }
+        }
+      ]
     },
     limit: Number(pageSize),
     offset: Number(pageSize) * (page - 1),

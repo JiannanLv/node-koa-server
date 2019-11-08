@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: jiannan.lv
  * @Date: 2019-11-07 14:55:00
- * @LastEditTime: 2019-11-07 19:50:43
+ * @LastEditTime: 2019-11-08 10:46:12
  * @LastEditors: jiannan.lv
  */
 // 引入 sequelize 包，创建 sequelize 实例
@@ -15,7 +15,7 @@ const chartList = dbConn.define('chartlist', {
   chartId: {
     type: Sequelize.STRING(255), // 数据类型
     allowNull: false, // 是否为 null
-    primaryKey: true // 是否为 主键
+    primaryKey: true  // 是否为 主键
   },
   // 如果不指定 field，会自动映射相同名称的字段
   chName: {

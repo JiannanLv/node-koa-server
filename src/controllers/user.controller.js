@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: jiannan.lv
  * @Date: 2019-11-07 10:32:27
- * @LastEditTime: 2019-11-07 19:49:23
+ * @LastEditTime: 2019-11-08 11:06:06
  * @LastEditors: jiannan.lv
  */
 // import Validation from '../util/validation'
@@ -22,12 +22,18 @@ export async function getUserList (ctx, next) {
   // 查询列表
   const userList = await User.findAll({
     where: {
-      name: {
-        [Op.like]: `%${key}%`
-      },
-      department: {
-        [Op.like]: `%${key}%`
-      }
+      [Op.or]: [
+        {
+          name: {
+            [Op.like]: `%${key}%`
+          }
+        },
+        {
+          department: {
+            [Op.like]: `%${key}%`
+          }
+        }
+      ]
     },
     limit: Number(pageSize),
     offset: Number(pageSize) * (page - 1)
